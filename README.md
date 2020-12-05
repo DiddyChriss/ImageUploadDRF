@@ -11,7 +11,7 @@
 * [Contact](#contact)
 
 ## Description
-Simple upload images app biult in API Django REST framework.
+Simple upload images app built in API Django REST framework.
 
 ## Software
 * Python - version 3.8
@@ -19,16 +19,16 @@ Simple upload images app biult in API Django REST framework.
 * Djangorestframework 3.12.2
 
 ## Initial Setup
-#### git clone reposiotory
-#### Use 'pip3 install virtualenv' than 'virtualenv (nameOfVirtualenv)' and 'source venv/bin/activate'
+#### git clone repository
 #### "pip install -r requirements.txt" to install all supply software
+#### Use 'virtualenv (virtualenv name)' and 'source venv/bin/activate'
 #### "python3 manage.py createsuperuser" so you can manage Django Api UI, create users and plans. Or login in user: ("diddy"), password: 'Diddychriss1'
 #### Have fun!
 
 
 
 ## Usage
-#### Main page will move you to API page
+#### Main page will move you to API page by click in a link
 #### API supply you with link to list of image(empty for start)
 #### In API list of images finally you can upload images in format 'JPG and 'PNG' only, with extra options depending on the plan
 ##### * Basic - allows you to get a link to a thumbnail that's 200px in height
@@ -39,10 +39,10 @@ Simple upload images app biult in API Django REST framework.
 
 
 ## Live View
-(http://.pythonanywhere.com/) 
+(http://diddychriss.online/)  (on progres)
 
 ## Status
-Project is: _in progress
+Project is: finish!
 
 ## Contact
 Created by [DiddyChriss] (http://chriss.pythonanywhere.com/) - feel free to contact me!

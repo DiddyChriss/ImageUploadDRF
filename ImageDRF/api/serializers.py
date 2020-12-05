@@ -15,7 +15,8 @@ class UserSerializer(ModelSerializer):
     img_px200      = ImageField(read_only=True)
     user           = SerializerMethodField()
     generated_link = SerializerMethodField(read_only=True)
-    delete_generated_link_time = IntegerField()
+    delete_generated_link_time      = IntegerField()
+    generated_link_time_left_second = SerializerMethodField(read_only=True)
 
     class Meta:
         model   = Image
@@ -27,6 +28,7 @@ class UserSerializer(ModelSerializer):
             'img',
             'img_original',
             'delete_generated_link_time',
+            'generated_link_time_left_second',
             'generated_link',
         ]
 
@@ -41,20 +43,22 @@ class UserSerializer(ModelSerializer):
     def to_representation(self, obj,  *args, **kwargs):                                      # remove selected fields
         ret = super(UserSerializer, self).to_representation(obj)
         ret.pop('img')
+        ret.pop('delete_generated_link_time')
         if obj.user.account.img == False:
             ret.pop('img_original')
         if obj.user.account.img_px400 == False:
             ret.pop('img_px400')
         if obj.user.account.generated_link == False:
-            ret.pop('delete_generated_link_time')
+            ret.pop('generated_link_time_left_second')
             ret.pop('generated_link')
         else:
             now_time = timezone.now()
             delete_time = obj.timestamp + datetime.timedelta(
                 seconds=int(obj.delete_generated_link_time)
             )
+
             if now_time > delete_time:
-                ret.pop('delete_generated_link_time')
+                ret.pop('generated_link_time_left_second')
                 ret.pop('generated_link')
         return ret
 
@@ -72,6 +76,13 @@ class UserSerializer(ModelSerializer):
         request = self.context.get("request")
         if obj.user.account.generated_link == True:
             return request.build_absolute_uri(obj.img.url)
+
+    def get_generated_link_time_left_second(self, obj, *args, **kwargs):      # time left of expiring link for original image
+        delete_time = obj.timestamp + datetime.timedelta(
+            seconds=int(obj.delete_generated_link_time)
+        )
+        time_left = delete_time - timezone.now()
+        return time_left.seconds
 
     def get_user(self, obj):                                           # user
         return str(obj.user.userUser)

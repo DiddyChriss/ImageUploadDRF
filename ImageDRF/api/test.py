@@ -11,7 +11,6 @@ payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 encode_handler = api_settings.JWT_ENCODE_HANDLER
 
 from ImageDRF.models import Image, User, Account
-from .views import ImageAPIView
 
 User_auth = get_user_model()
 
