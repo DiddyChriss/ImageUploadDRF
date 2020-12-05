@@ -6,7 +6,7 @@
 * [Software](#software)
 * [Initial Setup](#initial-setup)
 * [Usage](#Usage)
-* [Live View](#Live View)
+* [Live_View](#Live-View)
 * [Status](#status)
 * [Contact](#contact)
 
