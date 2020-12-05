@@ -39,10 +39,10 @@ Simple upload images app biult in API Django REST framework.
 
 
 ## Live View
-(http://.pythonanywhere.com/) 
+(http://diddychriss.online/)  (on progres)
 
 ## Status
-Project is: _in progress
+Project is: finish!
 
 ## Contact
 Created by [DiddyChriss] (http://chriss.pythonanywhere.com/) - feel free to contact me!
