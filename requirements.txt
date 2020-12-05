@@ -4,4 +4,8 @@ djangorestframework-jwt==1.11.0
 Pillow==8.0.1
 djangorestframework-files==1.1.0
 django-upload-validator==1.1.5
+<<<<<<< HEAD
 django-imagekit==4.0.2
+=======
+django-imagekit==4.0.2
+>>>>>>> 48036786c5daa7488bd127cd10f13955e3f14584
