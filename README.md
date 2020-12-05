@@ -1,4 +1,4 @@
-# Postings 
+# Image Upload App
 ### Django-RestAPI-Framework app
 
 ## Table of contents
@@ -15,9 +15,7 @@ Simple app biuld in Django-Rest-Framework.
 * Python - version 3.8
 * Python Django - version 3.1.3
 * Djangorestframework 3.12.2
-* HTML/CSS/Bootstrap
-* JavaScript 
-* MySQL
+
 
 ## Initial Setup
 #### Use venv
