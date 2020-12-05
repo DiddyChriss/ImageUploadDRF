@@ -2,13 +2,15 @@
 ### Django-RestAPI-Framework app
 
 ## Table of contents
-* [General info](#general-info)
+* [Description](#Description)
 * [Software](#software)
 * [Initial Setup](#initial-setup)
+* [Usage](#Usage)
+* [Live View](#Live View)
 * [Status](#status)
 * [Contact](#contact)
 
-## General info
+## Description
 Simple app biuld in Django-Rest-Framework.
 
 ## Software
@@ -16,11 +18,16 @@ Simple app biuld in Django-Rest-Framework.
 * Python Django - version 3.1.3
 * Djangorestframework 3.12.2
 
-
 ## Initial Setup
 #### Use venv
 #### "pip install -r Requirements.txt" to install all supply software
 
+## Usege
+#### instruction
+#### introdoction
+
+## Live View
+(http://chriss.pythonanywhere.com/) 
 
 ## Status
 Project is: _in progress
