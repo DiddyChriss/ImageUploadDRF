@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.core.files import File
 
 from rest_framework import status
-from rest_framework.test import APIClient, APITestCase,  APIRequestFactory, force_authenticate
+from rest_framework.test import APIClient, APITestCase
 from rest_framework.reverse import reverse as api_reverse
 from rest_framework_jwt.settings import api_settings
 
@@ -61,6 +61,7 @@ class ImageDRFAPITestCase(APITestCase):
         url = api_reverse("ImageDRF:ImageDRFapi")
         response = client.get(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 1)
 
     def test_post(self):                                                    # test post
         client = APIClient()
