@@ -12,7 +12,12 @@ class ImageAPIView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.Create
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
-        user = User.objects.get(userUser=request.user)
+        try:
+            user = User.objects.get(userUser=request.user)
+        except:
+            account = Account.objects.get(name='Basic')
+            user = User.objects.create(userUser=request.user, account=account)
+
         queryset = queryset.filter(user=user)
         page = self.paginate_queryset(queryset)
 
