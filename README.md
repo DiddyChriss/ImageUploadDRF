@@ -11,7 +11,7 @@
 * [Contact](#contact)
 
 ## Description
-Simple upload images app biult in API Django REST framework.
+Simple upload images app built in API Django REST framework.
 
 ## Software
 * Python - version 3.8
@@ -19,7 +19,7 @@ Simple upload images app biult in API Django REST framework.
 * Djangorestframework 3.12.2
 
 ## Initial Setup
-#### git clone reposiotory
+#### git clone repository
 #### "pip install -r requirements.txt" to install all supply software
 #### Use 'virtualenv (virtualenv name)' and 'source venv/bin/activate'
 #### "python3 manage.py createsuperuser" so you can manage Django Api UI, create users and plans. Or login in user: ("diddy"), password: 'Diddychriss1'
