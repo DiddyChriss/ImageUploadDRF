@@ -30,7 +30,7 @@ Simple upload images app built in API Django REST framework.
 ## Usage
 #### Main page will move you to API page by click in a link
 #### API supply you with link to list of image(empty for start)
-#### In API list of images finally you can upload images in format 'JPG and 'PNG' only, with extra options depending on the plan
+#### In API list of images finally you can upload images in format 'JPG and 'PNG' only, with extra options depending on the specific plan
 ##### * Basic - allows you to get a link to a thumbnail that's 200px in height
 ##### * Premium - allows you to get a link to a thumbnail that's 200px, 400px in height and a link to the originally uploaded image
 ##### * Enterprise - allows you to get a link to a thumbnail that's 200px, 400px in height and originally uploaded image,
