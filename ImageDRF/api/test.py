@@ -10,7 +10,7 @@ from rest_framework_jwt.settings import api_settings
 payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 encode_handler = api_settings.JWT_ENCODE_HANDLER
 
-from ImageDRF.models import Image, User, Plan
+from ImageDRF.models import Image, AccountUser, Plan
 
 User_auth = get_user_model()
 
@@ -28,13 +28,13 @@ class ImageDRFAPITestCase(APITestCase):
             generated_link = True,
         )
 
-        user = User.objects.create(
+        user = AccountUser.objects.create(
             user_account = user_obj,
             account = Plan.objects.get(name='Enterprise'),
         )
 
         image = Image.objects.create(                                       # def data Image
-            user=User.objects.get(user_account=user_obj),
+            user=AccountUser.objects.get(user_account=user_obj),
             img=File(open('media/home.jpg', 'rb')),
             delete_generated_link_time = 300,
             timestamp=datetime.datetime.now(),
@@ -43,7 +43,7 @@ class ImageDRFAPITestCase(APITestCase):
 
     def test_models_acount(self):                                           # test single models
         acount_count = Plan.objects.count()
-        user_count = User.objects.count()
+        user_count = AccountUser.objects.count()
         image_count = Image.objects.count()
         self.assertEqual(acount_count, 1)
         self.assertEqual(user_count, 1)

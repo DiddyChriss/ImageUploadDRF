@@ -14,7 +14,7 @@ class Plan(models.Model):
     def __str__(self):
         return str(self.name)
 
-class User(models.Model):
+class AccountUser(models.Model):
     user_account = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     account  = models.ForeignKey(Plan, on_delete=models.CASCADE, related_name='Account')
 
@@ -22,7 +22,7 @@ class User(models.Model):
         return str(self.user_account)
 
 class Image(models.Model):
-    user          = models.ForeignKey(User, on_delete=models.CASCADE, related_name='User')
+    user          = models.ForeignKey(AccountUser, on_delete=models.CASCADE, related_name='User')
     img           = models.ImageField(upload_to='',null=True)
     img_px200     = ImageSpecField(
         source='img',

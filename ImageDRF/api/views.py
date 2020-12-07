@@ -1,7 +1,7 @@
 from rest_framework import generics, mixins, viewsets
 from rest_framework.response import Response
 
-from ImageDRF.models import Image, Plan, User
+from ImageDRF.models import Image, Plan, AccountUser
 
 from .serializers import UserSerializer
 
@@ -12,7 +12,7 @@ class ImageAPIView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.Create
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
-        user = User.objects.get(user_account=request.user)
+        user = AccountUser.objects.get(user_account=request.user)
         queryset = queryset.filter(user=user)
         page = self.paginate_queryset(queryset)
 
@@ -25,7 +25,7 @@ class ImageAPIView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.Create
 
 
     def perform_create(self, serializer):
-        user_account = User.objects.get(user_account=self.request.user)
+        user_account = AccountUser.objects.get(user_account=self.request.user)
         return serializer.save(user=user_account)
 
     def post(self, request):
