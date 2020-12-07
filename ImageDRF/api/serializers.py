@@ -5,7 +5,7 @@ from django.utils import timezone
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer, SerializerMethodField, ImageField, IntegerField
 
-from ImageDRF.models import Image, User, Account
+from ImageDRF.models import Image, User, Plan
 
 
 class UserSerializer(ModelSerializer):
@@ -35,7 +35,7 @@ class UserSerializer(ModelSerializer):
     def get_fields(self, *args, **kwargs):
         fields = super(UserSerializer, self).get_fields(*args, **kwargs)
         request = self.context.get('request', None)
-        user = User.objects.get(userUser=request.user)
+        user = User.objects.get(user_account=request.user)
         if user.account.generated_link == False:
             fields['delete_generated_link_time'].read_only = True
         return fields
@@ -85,13 +85,13 @@ class UserSerializer(ModelSerializer):
         return time_left.seconds
 
     def get_user(self, obj):                                           # user
-        return str(obj.user.userUser)
+        return str(obj.user.user_account)
 
     def validate(self, data, *args, **kwargs):                                          # validation
         img = data.get("img", None)
         delete_generated_link_time = data.get("delete_generated_link_time", None)
         request = self.context.get('request', None)
-        user = User.objects.get(userUser=request.user)
+        user = User.objects.get(user_account=request.user)
         if img is None:
             raise serializers.ValidationError("Image must be provided!")
         if user.account.generated_link == True and (delete_generated_link_time is None or

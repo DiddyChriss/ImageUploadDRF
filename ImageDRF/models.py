@@ -4,7 +4,7 @@ from imagekit.processors import ResizeToFill
 from django.conf import settings
 from django.db import models
 
-class Account(models.Model):
+class Plan(models.Model):
     name            = models.CharField(max_length=200)
     img_px200       = models.BooleanField(default=True)
     img_px400       = models.BooleanField(default=False)
@@ -15,11 +15,11 @@ class Account(models.Model):
         return str(self.name)
 
 class User(models.Model):
-    userUser = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    account  = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='Account')
+    user_account = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    account  = models.ForeignKey(Plan, on_delete=models.CASCADE, related_name='Account')
 
     def __str__(self):
-        return str(self.userUser)
+        return str(self.user_account)
 
 class Image(models.Model):
     user          = models.ForeignKey(User, on_delete=models.CASCADE, related_name='User')
