@@ -20,8 +20,8 @@ Simple upload images app built in API Django REST framework.
 
 ## Initial Setup
 #### git clone repository
+#### Use virtualenv
 #### "pip install -r requirements.txt" to install all supply software
-#### Use 'virtualenv (virtualenv name)' and 'source venv/bin/activate'
 #### "python3 manage.py createsuperuser" so you can manage Django Api UI, create users and plans. Or login in user: ("diddy"), password: 'Diddychriss1'
 #### Have fun!
 
