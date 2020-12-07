@@ -6,7 +6,6 @@
 * [Software](#software)
 * [Initial Setup](#initial-setup)
 * [Usage](#usage)
-* [Live_View](#live-View)
 * [Status](#status)
 * [Contact](#contact)
 
@@ -20,12 +19,10 @@ Simple upload images app built in API Django REST framework.
 
 ## Initial Setup
 #### git clone repository
+#### Use virtualenv
 #### "pip install -r requirements.txt" to install all supply software
-#### Use 'virtualenv (virtualenv name)' and 'source venv/bin/activate'
-#### "python3 manage.py createsuperuser" so you can manage Django Api UI, create users and plans. Or login in user: ("diddy"), password: 'Diddychriss1'
+#### "python3 manage.py createsuperuser" so you can manage Django Api UI, create users and plans.
 #### Have fun!
-
-
 
 ## Usage
 #### Main page will move you to API page by click in a link
@@ -36,10 +33,6 @@ Simple upload images app built in API Django REST framework.
 ##### * Enterprise - allows you to get a link to a thumbnail that's 200px, 400px in height and originally uploaded image,
 #####   also you can generate timeout link with original uploaded image(timeout between 3000 and 30000 seconds)
 #### Basic Django Api UI allows You to create, modify plans(by thumbnail size, and link generate option) and create users, (have fun!)
-
-
-## Live View
-(http://diddychriss.online/)  (on progres)
 
 ## Status
 Project is: finish!

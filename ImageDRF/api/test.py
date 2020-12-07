@@ -41,16 +41,12 @@ class ImageDRFAPITestCase(APITestCase):
         )
 
 
-    def test_single_acount(self):                                           # test account
+    def test_models_acount(self):                                           # test single models
         acount_count = Account.objects.count()
+        user_count = User.objects.count()
+        image_count = Image.objects.count()
         self.assertEqual(acount_count, 1)
-
-    def test_single_user(self):                                             # test user
-        user_count = Account.objects.count()
         self.assertEqual(user_count, 1)
-
-    def test_single_image(self):                                            # test image
-        image_count = Account.objects.count()
         self.assertEqual(image_count, 1)
 
     def test_get_list(self):                                                # test list of items
