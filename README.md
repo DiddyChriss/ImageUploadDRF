@@ -6,6 +6,7 @@
 * [Software](#software)
 * [Initial Setup](#initial-setup)
 * [Usage](#usage)
+* [Live_view](#live_view)
 * [Status](#status)
 * [Contact](#contact)
 
@@ -33,6 +34,9 @@ Simple upload images app built in API Django REST framework.
 ##### * Enterprise - allows you to get a link to a thumbnail that's 200px, 400px in height and originally uploaded image,
 #####   also you can generate timeout link with original uploaded image(timeout between 3000 and 30000 seconds)
 #### Basic Django Api UI allows You to create, modify plans(by thumbnail size, and link generate option) and create users, (have fun!)
+
+## Live view
+Live view available on  (www.diddychriss.online/) - for login user info please contact me...
 
 ## Status
 Project is: finish!
