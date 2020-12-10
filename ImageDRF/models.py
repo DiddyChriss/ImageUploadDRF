@@ -5,7 +5,7 @@ from django.conf import settings
 from django.db import models
 
 class Plan(models.Model):
-    name            = models.CharField(max_length=200)
+    name            = models.CharField(max_length=200, unique=True)
     img_px200       = models.BooleanField(default=True)
     img_px400       = models.BooleanField(default=False)
     img             = models.BooleanField(default=False)
@@ -15,7 +15,7 @@ class Plan(models.Model):
         return str(self.name)
 
 class AccountUser(models.Model):
-    user_account = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user_account = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, unique=True)
     account  = models.ForeignKey(Plan, on_delete=models.CASCADE, related_name='Account')
 
     def __str__(self):
