@@ -23,7 +23,6 @@ class MyAccountManager(BaseUserManager):
 
 class Plan(models.Model):
     name            = models.CharField(max_length=200, default='Basic')
-    name            = models.CharField(max_length=200, unique=True)
     img_px200       = models.BooleanField(default=True)
     img_px400       = models.BooleanField(default=False)
     img             = models.BooleanField(default=False)
@@ -49,15 +48,8 @@ class User(AbstractBaseUser):
 
     objects = MyAccountManager()
 
-class AccountUser(models.Model):
-    user_account = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, unique=True)
-    account  = models.ForeignKey(Plan, on_delete=models.CASCADE, related_name='Account')
-
-    def __str__(self):
-        return self.username
-
     def has_perm(self, perm, obj=None):
-        return self.is_admin
+        return True
 
     def has_module_perms(self, app_label):
         return True
@@ -65,7 +57,7 @@ class AccountUser(models.Model):
 
 class Image(models.Model):
     user          = models.ForeignKey(User, on_delete=models.CASCADE, related_name='User')
-    img           = models.ImageField(upload_to='',null=True)
+    img           = models.ImageField(upload_to='', null=True)
     img_px200     = ImageSpecField(
         source='img',
         processors=[ResizeToFill(150, 200)],

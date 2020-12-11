@@ -29,7 +29,7 @@ class ImageDRFAPITestCase(APITestCase):
         )
 
         image = Image.objects.create(                                       # def data Image
-            user=tUser.objects.get(username=user_obj),
+            user=User.objects.get(username=user_obj),
             img=File(open('media/home.jpg', 'rb')),
             delete_generated_link_time = 300,
             timestamp=datetime.datetime.now(),
