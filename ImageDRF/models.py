@@ -22,7 +22,11 @@ class MyAccountManager(BaseUserManager):
         return user
 
 class Plan(models.Model):
+<<<<<<< HEAD
     name            = models.CharField(max_length=200, default='Basic')
+=======
+    name            = models.CharField(max_length=200, unique=True)
+>>>>>>> 838b334259b37ef4165ce94b05f742125a023c3e
     img_px200       = models.BooleanField(default=True)
     img_px400       = models.BooleanField(default=False)
     img             = models.BooleanField(default=False)
@@ -43,10 +47,16 @@ class User(AbstractBaseUser):
     is_staff                = models.BooleanField(default=False)
     is_superuser            = models.BooleanField(default=False)
 
+<<<<<<< HEAD
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
     objects = MyAccountManager()
+=======
+class AccountUser(models.Model):
+    user_account = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, unique=True)
+    account  = models.ForeignKey(Plan, on_delete=models.CASCADE, related_name='Account')
+>>>>>>> 838b334259b37ef4165ce94b05f742125a023c3e
 
     def __str__(self):
         return self.username
