@@ -16,17 +16,17 @@ User = get_user_model()
 
 class ImageDRFAPITestCase(APITestCase):
     def setUp(self):
-        user_obj = User(username='testone', plan='Enterprise', password='somepassword')          # def user
-        user_obj.set_password('somepassword')
-        user_obj.save()
-
         plan = Plan.objects.create(
             name='Enterprise',
-            img_px200 = True,
-            img_px400 = True,
-            img = True,
-            generated_link = True,
+            img_px200=True,
+            img_px400=True,
+            img=True,
+            generated_link=True,
         )
+
+        user_obj = User(username='testone', plan=Plan.objects.get(name='Enterprise'))          # def user
+        user_obj.set_password('somepassword')
+        user_obj.save()
 
         image = Image.objects.create(                                       # def data Image
             user=User.objects.get(username=user_obj),
