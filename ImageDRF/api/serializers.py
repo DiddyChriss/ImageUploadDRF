@@ -5,7 +5,7 @@ from django.utils import timezone
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer, SerializerMethodField, ImageField, IntegerField
 
-from ImageDRF.models import Image, AccountUser, Plan
+from ImageDRF.models import Image, User, Plan
 
 
 class UserSerializer(ModelSerializer):
@@ -35,8 +35,8 @@ class UserSerializer(ModelSerializer):
     def get_fields(self, *args, **kwargs):
         fields = super(UserSerializer, self).get_fields(*args, **kwargs)
         request = self.context.get('request', None)
-        user = AccountUser.objects.get(user_account=request.user)
-        if user.account.generated_link == False:
+        user = User.objects.get(username=request.user)
+        if user.plan.generated_link == False:
             fields['delete_generated_link_time'].read_only = True
         return fields
 
@@ -44,11 +44,11 @@ class UserSerializer(ModelSerializer):
         ret = super(UserSerializer, self).to_representation(obj)
         ret.pop('img')
         ret.pop('delete_generated_link_time')
-        if obj.user.account.img == False:
+        if obj.user.plan.img == False:
             ret.pop('img_original')
-        if obj.user.account.img_px400 == False:
+        if obj.user.plan.img_px400 == False:
             ret.pop('img_px400')
-        if obj.user.account.generated_link == False:
+        if obj.user.plan.generated_link == False:
             ret.pop('generated_link_time_left_second')
             ret.pop('generated_link')
         else:
@@ -64,17 +64,17 @@ class UserSerializer(ModelSerializer):
 
     def get_img_px400(self, obj, *args, **kwargs):                     # genarate link for 200px thumbnail
         request = self.context.get("request")
-        if obj.user.account.img_px400 == True:
+        if obj.user.plan.img_px400 == True:
             return request.build_absolute_uri(obj.img_px400.url)
 
     def get_img_original(self, obj, *args, **kwargs):                  # genarate link for original size image
         request = self.context.get("request")
-        if obj.user.account.img == True:
+        if obj.user.plan.img == True:
             return request.build_absolute_uri(obj.img.url)
 
     def get_generated_link(self, obj, *args, **kwargs):                # genarate expiring link for original size image
         request = self.context.get("request")
-        if obj.user.account.generated_link == True:
+        if obj.user.plan.generated_link == True:
             return request.build_absolute_uri(obj.img.url)
 
     def get_generated_link_time_left_second(self, obj, *args, **kwargs):      # time left of expiring link for original image
@@ -85,16 +85,16 @@ class UserSerializer(ModelSerializer):
         return time_left.seconds
 
     def get_user(self, obj):                                           # user
-        return str(obj.user.user_account)
+        return str(obj.user.username)
 
     def validate(self, data, *args, **kwargs):                                          # validation
         img = data.get("img", None)
         delete_generated_link_time = data.get("delete_generated_link_time", None)
         request = self.context.get('request', None)
-        user = AccountUser.objects.get(user_account=request.user)
+        user = User.objects.get(username=request.user)
         if img is None:
             raise serializers.ValidationError("Image must be provided!")
-        if user.account.generated_link == True and (delete_generated_link_time is None or
+        if user.plan.generated_link == True and (delete_generated_link_time is None or
                                                     delete_generated_link_time < 300 or
                                                     delete_generated_link_time > 30000):
             raise serializers.ValidationError(

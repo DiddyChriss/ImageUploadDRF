@@ -71,6 +71,7 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'ImageDRF.User'
 
 ROOT_URLCONF = 'MainImgApp.urls'
 
