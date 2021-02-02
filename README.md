@@ -37,7 +37,7 @@ Simple upload images app built in API Django REST framework.
 #### Basic Django Api UI allows You to create, modify plans(by thumbnail size, and link generate option) and create users, (have fun!)
 
 ## Live view
-Live view available on  (www.diddychriss.online/) - for login user info please contact me...
+Live view unavailable..
 
 ## Status
 Project is: finish!
